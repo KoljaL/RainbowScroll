@@ -406,15 +406,10 @@
 
 
         document.addEventListener('scroll', (e) => {
-
-            // console.log(getScrollPercent())
-
             let percent = getScrollPercent();
             let hsl = Math.round(percent * 3.6);
-            // console.log(hsl)
             p.innerHTML = Math.round(percent) + ' %';
             r.style.setProperty('--rainbowColor', 'hsl(' + hsl + ', 70%, 50%)');
-
         })
     </script>
 </body>
