@@ -39,6 +39,12 @@
         strong {
             color: var(--rainbowColor);
         }
+        
+        #percent {
+            padding-left: 2rem;
+            font-size: 1rem;
+            color: rgb(173, 173, 173);
+        }
     </style>
 
 </head>
@@ -46,7 +52,7 @@
 
 <body>
     <header>
-        <h1>Rainbow Scroll</h1>
+        <h1>Rainbow Scroll<span id=percent>0 %</span></h1>
     </header>
     <main>
         <h2>Firmament First Herb I A Created Subdue Man</h2>
@@ -384,6 +390,7 @@
 
     <script>
         var r = document.querySelector(':root');
+        var p = document.querySelector('#percent');
         r.style.setProperty('--rainbowColor', 'hsl(0, 70%, 50%)');
 
 
@@ -405,6 +412,7 @@
             let percent = getScrollPercent();
             let hsl = Math.round(percent * 3.6);
             // console.log(hsl)
+            p.innerHTML = Math.round(percent) + ' %';
             r.style.setProperty('--rainbowColor', 'hsl(' + hsl + ', 70%, 50%)');
 
         })
