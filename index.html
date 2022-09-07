@@ -8,7 +8,7 @@
     <title>RainbowScroll</title>
     <style>
          :root {
-            --rainbowColor: hsl(277, 100%, 50%);
+            --rainbowColor: hsl(0, 100%, 50%);
         }
         
         body {
@@ -50,7 +50,6 @@
     </style>
 
 </head>
-<!-- https://koljal.github.io/RainbowScroll -->
 
 <body>
     <header>
@@ -391,25 +390,22 @@
     </main>
 
     <script>
-        var r = document.querySelector(':root');
-        var p = document.querySelector('#percent');
-        r.style.setProperty('--rainbowColor', 'hsl(0, 70%, 50%)');
-
-
+        var r = document.querySelector(':root'),
+            p = document.querySelector('#percent'),
+            h = document.documentElement,
+            b = document.body,
+            st = 'scrollTop',
+            sh = 'scrollHeight',
+            percent,
+            hsl;
 
         function getScrollPercent() {
-            var h = document.documentElement,
-                b = document.body,
-                st = 'scrollTop',
-                sh = 'scrollHeight';
             return (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
         }
 
-
-
         document.addEventListener('scroll', (e) => {
-            let percent = getScrollPercent();
-            let hsl = Math.round(percent * 3.6);
+            percent = getScrollPercent();
+            hsl = Math.round(percent * 3.6);
             p.innerHTML = Math.round(percent) + ' %';
             r.style.setProperty('--rainbowColor', 'hsl(' + hsl + ', 70%, 50%)');
         })
